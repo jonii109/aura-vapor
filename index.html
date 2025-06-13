@@ -1,6 +1,169 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Importa JMB - Tienda</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+    }
+    header {
+      background: linear-gradient(to right, #b8860b, #000);
+      color: white;
+      padding: 20px 60px;
+      text-align: center;
+      position: relative;
+    }
+    header img.logo {
+      height: 60px;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+    }
+    .banner {
+      background: url('https://i.ibb.co/k1KNxw5/banner-vape-perfume.jpg') center/cover no-repeat;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2.2rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
+    }
+    .container {
+      padding: 30px 60px;
+    }
+    h2 {
+      margin-top: 40px;
+      border-bottom: 2px solid #b8860b;
+      padding-bottom: 5px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+    .product-card {
+      background-color: #111;
+      border: 1px solid #b8860b;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-card img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .product-card h3 {
+      font-size: 1.2rem;
+      margin: 10px 0 5px;
+      color: #ffd700;
+    }
+    .product-card p {
+      margin: 5px 0;
+      font-weight: bold;
+      color: #fff;
+    }
+    .flavor-select, .quantity-input {
+      margin-top: 10px;
+      padding: 8px;
+      width: 90%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+    .add-cart-btn {
+      margin-top: 12px;
+      background-color: #b8860b;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 90%;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .add-cart-btn:hover {
+      background-color: #daa520;
+    }
+    #cart {
+      padding: 30px 60px;
+      border-top: 2px solid #444;
+      margin-top: 40px;
+    }
+    #cart ul {
+      list-style: none;
+      padding: 0;
+    }
+    #cart li {
+      margin-bottom: 10px;
+    }
+    .remove-btn {
+      margin-left: 10px;
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 3px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .whatsapp-btn {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #25D366;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.ibb.co/1XzQ1r5/logo-jmb.png" alt="Importa JMB Logo" class="logo" />
+    <h1>Importa JMB</h1>
+  </header>
+
+  <div class="banner">
+    ¡Descubrí los mejores vapers y perfumes exclusivos!
+  </div>
+
+  <div class="container">
+    <h2>Vapers</h2>
+    <div class="product-grid" id="vaperGrid"></div>
+
+    <h2>Perfumes</h2>
+    <div class="product-grid" id="perfumeGrid"></div>
+  </div>
+
+  <div id="cart">
+    <h2>Carrito</h2>
+    <ul id="cartItems"></ul>
+    <a id="whatsappBtn" class="whatsapp-btn" href="#" target="_blank">Finalizar compra por WhatsApp</a>
+  </div>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aura & Vapor - Tienda Exclusiva</title>
@@ -162,50 +325,70 @@
     </div>
 
     <script>
-        const perfumes = [/* perfumes... */];
         const vapers = [
             {
                 name: "Geek Bar 25k",
                 price: 27000,
-                image: "https://i.ibb.co/98C6nSR/geekbar.jpg",
-                flavors: ["Blackberry b-pop", "Cool mint"]
+                flavors: ["Blackberry b-pop", "Cool mint"],
+                image: "https://i.ibb.co/dGZDbLT/geekbar.jpg"
             },
             {
                 name: "The black sheep",
                 price: 27000,
-                image: "https://i.ibb.co/Lhsc7fX/theblacksheep.jpg",
-                flavors: ["Strawberry banana / Pineapple coconut", "Menthol / Watermelon", "Cherry raspberry / Watermelon strawberry"]
+                flavors: ["Strawberry banana/pineapple coconut", "Menthol/Watermelon", "Cherry rasperry/watermelon strawberry"],
+                image: "https://i.ibb.co/Lpg7c5G/blacksheep.jpg"
             },
             {
                 name: "Los Mary combo 20k",
                 price: 26000,
-                image: "https://i.ibb.co/q0m6kWT/losmarycombo.jpg",
-                flavors: ["Grape / Mary drinks", "Blackcurrant raspberry / Grape"]
+                flavors: ["Grape/Mary drinks", "Blackcurrant rasperry/grape"],
+                image: "https://i.ibb.co/8B7YFJB/lost-mary-combo.jpg"
             },
             {
                 name: "Lost Mary Mixer 30k",
                 price: 28000,
-                image: "https://i.ibb.co/dGk3Jf5/lostmarymixer.jpg",
-                flavors: ["Orange strawberry", "Apple grape"]
+                flavors: ["Orange strawberry", "Apple grape"],
+                image: "https://i.ibb.co/84NVDJ7/lostmary-mixer.jpg"
             },
             {
                 name: "Elfbar ice king 40k",
                 price: 30000,
-                image: "https://i.ibb.co/VgLZcZ7/elfbariceking.jpg",
-                flavors: ["Blue razz ice", "Green Apple ice", "Strawberry watermelon ice", "Grape ice", "Mango Magic"]
+                flavors: ["Blue razz ice", "Green Apple ice", "Strawberry watermelon ice", "Grape ice", "Mango Magic"],
+                image: "https://i.ibb.co/YtZ3Z5M/elfbar-iceking.jpg"
             },
             {
                 name: "Oxbar g prime 25k",
                 price: 26000,
-                image: "https://i.ibb.co/wQ5YZHT/oxbargprime.jpg",
-                flavors: ["Watermelon slushie"]
+                flavors: ["Watermelon slushie"],
+                image: "https://i.ibb.co/KDGYYMW/oxbar-gprime.jpg"
             },
             {
                 name: "BLVK JUICE ONLY 45K",
                 price: 30000,
-                image: "https://i.ibb.co/JvLrxQt/blvkjuice.jpg",
-                flavors: ["Menthol", "Strawberry kiwi"]
+                flavors: ["Menthol", "Strawberry kiwi"],
+                image: "https://i.ibb.co/KLbS9Zn/blvkjuice.jpg"
             }
+        ];
+
+        const perfumes = [
+            { name: "Asad", price: 48000 },
+            { name: "Yara rosa", price: 55000 },
+            { name: "Yara candy", price: 48000 },
+            { name: "Club intense", price: 55000 },
+            { name: "Club woman", price: 70000 },
+            { name: "Honor & Glory", price: 55000 },
+            { name: "Club elixir Urban", price: 84000 },
+            { name: "Bharara king", price: 100000 },
+            { name: "Haramai gold", price: 110000 },
+            { name: "Rasasia hawas", price: 63000 },
+            { name: "Odyssey mandarin", price: 73000 },
+            { name: "Odyssey cande", price: 73000 },
+            { name: "Lataffa ajwad", price: 48000 },
+            { name: "Lataffa fakhar", price: 58000 },
+            { name: "Bade amethyst", price: 56000 },
+            { name: "Haramai aqua Dubai", price: 110000 },
+            { name: "Badee oud Glory", price: 55000 },
+            { name: "The kingdom", price: 70000 }
         ];
 
         const cart = [];
@@ -259,7 +442,7 @@
             const card = document.createElement("div");
             card.className = "product-card";
             card.innerHTML = `
-                <img src="${p.image}" alt="${p.name}">
+                <img src="https://i.ibb.co/g7BdFkm/perfume-bottle.jpg" alt="${p.name}">
                 <h3>${p.name}</h3>
                 <p>$${p.price.toLocaleString()}</p>
                 <input class="quantity-input" type="number" min="1" value="1">
@@ -276,3 +459,4 @@
     </script>
 </body>
 </html>
+
