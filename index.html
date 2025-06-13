@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aura & Vapor - Tienda Exclusiva</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(to right, #8e2de2, #4a00e0);
+            color: white;
+            padding: 20px 60px;
+            text-align: center;
+            position: relative;
+        }
+        header img.logo {
+            height: 60px;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        .banner {
+            background: url('https://i.ibb.co/k1KNxw5/banner-vape-perfume.jpg') center/cover no-repeat;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.2rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
+        }
+        .container {
+            padding: 30px 60px;
+        }
+        h2 {
+            margin-top: 40px;
+            border-bottom: 2px solid #8e2de2;
+            padding-bottom: 5px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .product-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-card img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .product-card h3 {
+            font-size: 1.2rem;
+            margin: 10px 0 5px;
+            color: #4a00e0;
+        }
+        .product-card p {
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        .flavor-select, .quantity-input {
+            margin-top: 10px;
+            padding: 8px;
+            width: 90%;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+        .add-cart-btn {
+            margin-top: 12px;
+            background-color: #8e2de2;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 90%;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .add-cart-btn:hover {
+            background-color: #4a00e0;
+        }
+        #cart {
+            padding: 30px 60px;
+            border-top: 2px solid #ccc;
+            margin-top: 40px;
+        }
+        #cart ul {
+            list-style: none;
+            padding: 0;
+        }
+        #cart li {
+            margin-bottom: 10px;
+        }
+        .whatsapp-btn {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #25D366;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://i.ibb.co/1XzQ1r5/logo-jmb.png" alt="Logo Aura & Vapor" class="logo" />
+        <h1>Aura & Vapor</h1>
+    </header>
+
+    <div class="banner">
+        ¡Descubrí los mejores vapers y perfumes exclusivos!
+    </div>
+
+    <div class="container">
+        <h2>Vapers</h2>
+        <div class="product-grid" id="vaperGrid"></div>
+
+        <h2>Perfumes</h2>
+        <div class="product-grid" id="perfumeGrid"></div>
+    </div>
+
+    <div id="cart">
+        <h2>Carrito</h2>
+        <ul id="cartItems"></ul>
+        <a id="whatsappBtn" class="whatsapp-btn" href="#" target="_blank">Finalizar compra por WhatsApp</a>
+    </div>
+
+    <script>
+        const vapers = [
+            {
+                name: "Geek Bar 25K",
+                price: 27000,
+                image: "https://cdn.shopify.com/s/files/1/0271/0526/3029/products/geek-bar-25k-puffs-disposable-vape-device-5_500x.jpg?v=1659587453",
+                flavors: ["Blackberry B-Pop", "Cool Mint"]
+            },
+            {
+                name: "The Black Sheep",
+                price: 27000,
+                image: "https://cdn.shopify.com/s/files/1/0254/8590/8487/products/The-Black-Sheep-Duo-Pod-Kit_600x.jpg?v=1615510205",
+                flavors: [
+                    "Strawberry Banana / Pineapple Coconut",
+                    "Menthol / Watermelon",
+                    "Cherry Raspberry / Watermelon Strawberry"
+                ]
+            },
+            {
+                name: "Los Mary Combo 20K",
+                price: 26000,
+                image: "https://cdn.shopify.com/s/files/1/0277/2987/8161/products/lost-mary-combo-pod-kit-20k-puffs_700x.jpg?v=1640651133",
+                flavors: ["Grape / Mary Drinks", "Blackcurrant Raspberry / Grape"]
+            },
+            {
+                name: "Lost Mary Mixer 30K",
+                price: 28000,
+                image: "https://cdn.shopify.com/s/files/1/0277/2987/8161/products/lost-mary-mixer-30k-puffs_700x.jpg?v=1640651162",
+                flavors: ["Orange Strawberry", "Apple Grape"]
+            },
+            {
+                name: "Elf Bar Ice King 40K",
+                price: 30000,
+                image: "https://cdn.shopify.com/s/files/1/0271/0526/3029/products/Elf-Bar-Ice-King-40000-Puffs-Disposable-Vape_700x.jpg?v=1678709951",
+                flavors: [
+                    "Blue Razz Ice",
+                    "Green Apple Ice",
+                    "Strawberry Watermelon Ice",
+                    "Grape Ice",
+                    "Mango Magic"
+                ]
+            },
+            {
+                name: "Oxbar G Prime 25K",
+                price: 26000,
+                image: "https://cdn.shopify.com/s/files/1/0269/0513/7793/products/OXBAR-G-Prime-25k_700x.jpg?v=1671499635",
+                flavors: ["Watermelon Slushie"]
+            },
+            {
+                name: "BLVK Juice Only 45K",
+                price: 30000,
+                image: "https://cdn.shopify.com/s/files/1/0103/7917/6216/products/BLVK-Juice-Only-45K-Disposable-Vape_700x.jpg?v=1668653438",
+                flavors: ["Menthol", "Strawberry Kiwi"]
+            }
+        ];
+
+        const perfumes = [
+            {
+                name: "Asad",
+                price: 48000,
+                image: "https://cdn.shopify.com/s/files/1/0068/1356/8878/products/ASAD-PERFUME-WOMEN-100ML-EDP-ORIGINAL-BRAND-FRAGRANCE-ORIGINAL_1024x1024.jpg"
+            },
+            {
+                name: "Yara rosa",
+                price: 55000,
+                image: "https://cdn.shopify.com/s/files/1/0296/3703/6335/products/DSC_0106_600x.jpg"
+            },
+            {
+                name: "Yara candy",
+                price: 48000,
+                image: "https://cdn.shopify.com/s/files/1/0296/3703/6335/products/DSC_0103_600x.jpg"
+            },
+            {
+                name: "Club intense",
+                price: 55000,
+                image: "https://cdn.shopify.com/s/files/1/0234/4421/products/Club_Intense_1_600x.jpg"
+            },
+            {
+                name: "Club woman",
+                price: 70000,
+                image: "https://cdn.shopify.com/s/files/1/0234/4421/products/Club_Woman_1_600x.jpg"
+            },
+            {
+                name: "Honor & Glory",
+                price: 55000,
+                image: "https://cdn.shopify.com/s/files/1/0204/9647/products/Honor-and-Glory-1_600x.jpg"
+            },
+            {
+                name: "Club elixir Urban",
+                price: 84000,
+                image: "https://cdn.shopify.com/s/files/1/0259/1973/products/Club_Elixir_Urban_600x.jpg"
+            },
+            {
+                name: "Bharara king",
+                price: 100000,
+                image: "https://cdn.shopify.com/s/files/1/0342/4717/products/Bharara_King_2_600x.jpg"
+            },
+            {
+                name: "Haramai gold",
+                price: 110000,
+                image: "https://cdn.shopify.com/s/files/1/0270/0737/products/Haramai_Gold_600x.jpg"
+            },
+            {
+                name: "Rasasia hawas",
+                price: 63000,
+                image: "https://cdn.shopify.com/s/files/1/0144/5014/2164/products/hawas_600x.jpg"
+            },
+            {
+                name: "Odyssey mandarin",
+                price: 73000,
+                image: "https://cdn.shopify.com/s/files/1/0219/6527/products/Odyssey_Mandarin_600x.jpg"
+            },
+            {
+                name: "Odyssey cande",
+                price: 73000,
+                image: "https://cdn.shopify.com/s/files/1/0219/6527/products/Odyssey_Cande_600x.jpg"
+            },
+            {
+                name: "Lataffa ajwad",
+                price: 48000,
+                image: "https://cdn.shopify.com/s/files/1/0077/3451/2381/products/Lataffa_Ajwad_600x.jpg"
+            },
+            {
+                name: "Lataffa fakhar",
+                price: 58000,
+                image: "https://cdn.shopify.com/s/files/1/0077/3451/2381/products/Lataffa_Fakhar_600x.jpg"
+            },
+            {
+                name: "Bade amethyst",
+                price: 56000,
+                image: "https://cdn.shopify.com/s/files/1/0029/7307/7856/products/Amethyst_600x.jpg"
+            },
+            {
+                name: "Haramai aqua Dubai",
+                price: 110000,
+                image: "https://cdn.shopify.com/s/files/1/0270/0737/products/Haramai_Aqua_Dubai_600x.jpg"
+            },
+            {
+                name: "Badee oud Glory",
+                price: 55000,
+                image: "https://cdn.shopify.com/s/files/1/0029/7307/7856/products/Badee_Oud_Glory_600x.jpg"
+            },
+            {
+                name: "The kingdom",
+                price: 70000,
+                image: "https://cdn.shopify.com/s/files/1/0209/9831/products/The_Kingdom_600x.jpg"
+            }
+        ];
+
+        const vaperGrid = document.getElementById("vaperGrid");
+        vapers.forEach(v => {
+            const card = document.createElement("div");
+            card.className = "product-card";
+            const flavorOptions = v.flavors.map(f => `<option value="${f}">${f}</option>`).join('');
+            card.innerHTML = `
+                <img src="${v.image}" alt="${v.name}">
+                <h3>${v.name}</h3>
+                <p>$${v.price.toLocaleString()}</p>
+                <select class="flavor-select" required>
+                    <option value="">Seleccionar sabor</option>
+                    ${flavorOptions}
+                </select>
+                <input class="quantity-input" type="number" min="1" value="1" />
+                <button class="add-cart-btn">Agregar al carrito</button>
+            `;
+            const button = card.querySelector(".add-cart-btn");
+            button.addEventListener("click", () => {
+                const flavorSelect = card.querySelector(".flavor-select");
+                const flavor = flavorSelect.value;
+                if (!flavor) {
+                    alert("Por favor, seleccioná un sabor.");
+                    flavorSelect.focus();
+                    return;
+                }
+                const quantity = parseInt(card.querySelector(".quantity-input").value);
+                cart.push({ name: v.name, flavor, quantity });
+                renderCart();
+            });
+            vaperGrid.appendChild(card);
+        });
+
+        const perfumeGrid = document.getElementById("perfumeGrid");
+        perfumes.forEach(p => {
+            const card = document.createElement("div");
+            card.className = "product-card";
+            card.innerHTML = `
+                <img src="${p.image}" alt="${p.name}">
+                <h3>${p.name}</h3>
+                <p>$${p.price.toLocaleString()}</p>
+                <input class="quantity-input" type="number" min="1" value="1" />
+                <button class="add-cart-btn">Agregar al carrito</button>
+            `;
+            const button = card.querySelector(".add-cart-btn");
+            button.addEventListener("click", () => {
+                const quantity = parseInt(card.querySelector(".quantity-input").value);
+                cart.push({ name: p.name, flavor: "", quantity });
+                renderCart();
+            });
+            perfumeGrid.appendChild(card);
+        });
+
+        const cart = [];
+
+        function renderCart() {
+            const cartItems = document.getElementById("cartItems");
+            cartItems.innerHTML = "";
+            cart.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.name} ${item.flavor ? `(${item.flavor})` : ""} x${item.quantity}`;
+                cartItems.appendChild(li);
+            });
+
+            const msg = cart.map(item => `${item.name}${item.flavor ? ` (${item.flavor})` : ""} x${item.quantity}`).join("%0A");
+            document.getElementById("whatsappBtn").href = `https://wa.me/541161224164?text=Hola! Quiero comprar:%0A${msg}`;
+        }
+    </script>
+</body>
+</html>
