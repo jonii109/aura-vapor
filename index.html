@@ -1,19 +1,19 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aura & Vapor - Tienda Exclusiva</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: #000;
+            color: #fff;
         }
         header {
-            background: linear-gradient(to right, #8e2de2, #4a00e0);
+            background: linear-gradient(to right, #b8860b, #000);
             color: white;
             padding: 20px 60px;
             text-align: center;
@@ -41,7 +41,7 @@
         }
         h2 {
             margin-top: 40px;
-            border-bottom: 2px solid #8e2de2;
+            border-bottom: 2px solid #b8860b;
             padding-bottom: 5px;
         }
         .product-grid {
@@ -51,9 +51,9 @@
             margin-top: 20px;
         }
         .product-card {
-            background-color: #fff;
+            background-color: #111;
+            border: 1px solid #b8860b;
             border-radius: 12px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -74,11 +74,12 @@
         .product-card h3 {
             font-size: 1.2rem;
             margin: 10px 0 5px;
-            color: #4a00e0;
+            color: #ffd700;
         }
         .product-card p {
             margin: 5px 0;
             font-weight: bold;
+            color: #fff;
         }
         .flavor-select, .quantity-input {
             margin-top: 10px;
@@ -90,7 +91,7 @@
         }
         .add-cart-btn {
             margin-top: 12px;
-            background-color: #8e2de2;
+            background-color: #b8860b;
             color: white;
             border: none;
             padding: 10px;
@@ -100,11 +101,11 @@
             transition: background 0.3s;
         }
         .add-cart-btn:hover {
-            background-color: #4a00e0;
+            background-color: #daa520;
         }
         #cart {
             padding: 30px 60px;
-            border-top: 2px solid #ccc;
+            border-top: 2px solid #444;
             margin-top: 40px;
         }
         #cart ul {
@@ -113,6 +114,15 @@
         }
         #cart li {
             margin-bottom: 10px;
+        }
+        .remove-btn {
+            margin-left: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 3px 6px;
+            border-radius: 4px;
+            cursor: pointer;
         }
         .whatsapp-btn {
             display: inline-block;
@@ -129,7 +139,7 @@
 </head>
 <body>
     <header>
-        <img src="https://i.ibb.co/1XzQ1r5/logo-jmb.png" alt="Logo Aura & Vapor" class="logo" />
+        <img src="https://i.ibb.co/1XzQ1r5/logo-jmb.png" alt="Logo Aura & Vapor" class="logo">
         <h1>Aura & Vapor</h1>
     </header>
 
@@ -152,181 +162,93 @@
     </div>
 
     <script>
+        const perfumes = [/* perfumes... */];
         const vapers = [
             {
-                name: "Geek Bar 25K",
+                name: "Geek Bar 25k",
                 price: 27000,
-                image: "https://cdn.shopify.com/s/files/1/0271/0526/3029/products/geek-bar-25k-puffs-disposable-vape-device-5_500x.jpg?v=1659587453",
-                flavors: ["Blackberry B-Pop", "Cool Mint"]
+                image: "https://i.ibb.co/98C6nSR/geekbar.jpg",
+                flavors: ["Blackberry b-pop", "Cool mint"]
             },
             {
-                name: "The Black Sheep",
+                name: "The black sheep",
                 price: 27000,
-                image: "https://cdn.shopify.com/s/files/1/0254/8590/8487/products/The-Black-Sheep-Duo-Pod-Kit_600x.jpg?v=1615510205",
-                flavors: [
-                    "Strawberry Banana / Pineapple Coconut",
-                    "Menthol / Watermelon",
-                    "Cherry Raspberry / Watermelon Strawberry"
-                ]
+                image: "https://i.ibb.co/Lhsc7fX/theblacksheep.jpg",
+                flavors: ["Strawberry banana / Pineapple coconut", "Menthol / Watermelon", "Cherry raspberry / Watermelon strawberry"]
             },
             {
-                name: "Los Mary Combo 20K",
+                name: "Los Mary combo 20k",
                 price: 26000,
-                image: "https://cdn.shopify.com/s/files/1/0277/2987/8161/products/lost-mary-combo-pod-kit-20k-puffs_700x.jpg?v=1640651133",
-                flavors: ["Grape / Mary Drinks", "Blackcurrant Raspberry / Grape"]
+                image: "https://i.ibb.co/q0m6kWT/losmarycombo.jpg",
+                flavors: ["Grape / Mary drinks", "Blackcurrant raspberry / Grape"]
             },
             {
-                name: "Lost Mary Mixer 30K",
+                name: "Lost Mary Mixer 30k",
                 price: 28000,
-                image: "https://cdn.shopify.com/s/files/1/0277/2987/8161/products/lost-mary-mixer-30k-puffs_700x.jpg?v=1640651162",
-                flavors: ["Orange Strawberry", "Apple Grape"]
+                image: "https://i.ibb.co/dGk3Jf5/lostmarymixer.jpg",
+                flavors: ["Orange strawberry", "Apple grape"]
             },
             {
-                name: "Elf Bar Ice King 40K",
+                name: "Elfbar ice king 40k",
                 price: 30000,
-                image: "https://cdn.shopify.com/s/files/1/0271/0526/3029/products/Elf-Bar-Ice-King-40000-Puffs-Disposable-Vape_700x.jpg?v=1678709951",
-                flavors: [
-                    "Blue Razz Ice",
-                    "Green Apple Ice",
-                    "Strawberry Watermelon Ice",
-                    "Grape Ice",
-                    "Mango Magic"
-                ]
+                image: "https://i.ibb.co/VgLZcZ7/elfbariceking.jpg",
+                flavors: ["Blue razz ice", "Green Apple ice", "Strawberry watermelon ice", "Grape ice", "Mango Magic"]
             },
             {
-                name: "Oxbar G Prime 25K",
+                name: "Oxbar g prime 25k",
                 price: 26000,
-                image: "https://cdn.shopify.com/s/files/1/0269/0513/7793/products/OXBAR-G-Prime-25k_700x.jpg?v=1671499635",
-                flavors: ["Watermelon Slushie"]
+                image: "https://i.ibb.co/wQ5YZHT/oxbargprime.jpg",
+                flavors: ["Watermelon slushie"]
             },
             {
-                name: "BLVK Juice Only 45K",
+                name: "BLVK JUICE ONLY 45K",
                 price: 30000,
-                image: "https://cdn.shopify.com/s/files/1/0103/7917/6216/products/BLVK-Juice-Only-45K-Disposable-Vape_700x.jpg?v=1668653438",
-                flavors: ["Menthol", "Strawberry Kiwi"]
+                image: "https://i.ibb.co/JvLrxQt/blvkjuice.jpg",
+                flavors: ["Menthol", "Strawberry kiwi"]
             }
         ];
 
-        const perfumes = [
-            {
-                name: "Asad",
-                price: 48000,
-                image: "https://cdn.shopify.com/s/files/1/0068/1356/8878/products/ASAD-PERFUME-WOMEN-100ML-EDP-ORIGINAL-BRAND-FRAGRANCE-ORIGINAL_1024x1024.jpg"
-            },
-            {
-                name: "Yara rosa",
-                price: 55000,
-                image: "https://cdn.shopify.com/s/files/1/0296/3703/6335/products/DSC_0106_600x.jpg"
-            },
-            {
-                name: "Yara candy",
-                price: 48000,
-                image: "https://cdn.shopify.com/s/files/1/0296/3703/6335/products/DSC_0103_600x.jpg"
-            },
-            {
-                name: "Club intense",
-                price: 55000,
-                image: "https://cdn.shopify.com/s/files/1/0234/4421/products/Club_Intense_1_600x.jpg"
-            },
-            {
-                name: "Club woman",
-                price: 70000,
-                image: "https://cdn.shopify.com/s/files/1/0234/4421/products/Club_Woman_1_600x.jpg"
-            },
-            {
-                name: "Honor & Glory",
-                price: 55000,
-                image: "https://cdn.shopify.com/s/files/1/0204/9647/products/Honor-and-Glory-1_600x.jpg"
-            },
-            {
-                name: "Club elixir Urban",
-                price: 84000,
-                image: "https://cdn.shopify.com/s/files/1/0259/1973/products/Club_Elixir_Urban_600x.jpg"
-            },
-            {
-                name: "Bharara king",
-                price: 100000,
-                image: "https://cdn.shopify.com/s/files/1/0342/4717/products/Bharara_King_2_600x.jpg"
-            },
-            {
-                name: "Haramai gold",
-                price: 110000,
-                image: "https://cdn.shopify.com/s/files/1/0270/0737/products/Haramai_Gold_600x.jpg"
-            },
-            {
-                name: "Rasasia hawas",
-                price: 63000,
-                image: "https://cdn.shopify.com/s/files/1/0144/5014/2164/products/hawas_600x.jpg"
-            },
-            {
-                name: "Odyssey mandarin",
-                price: 73000,
-                image: "https://cdn.shopify.com/s/files/1/0219/6527/products/Odyssey_Mandarin_600x.jpg"
-            },
-            {
-                name: "Odyssey cande",
-                price: 73000,
-                image: "https://cdn.shopify.com/s/files/1/0219/6527/products/Odyssey_Cande_600x.jpg"
-            },
-            {
-                name: "Lataffa ajwad",
-                price: 48000,
-                image: "https://cdn.shopify.com/s/files/1/0077/3451/2381/products/Lataffa_Ajwad_600x.jpg"
-            },
-            {
-                name: "Lataffa fakhar",
-                price: 58000,
-                image: "https://cdn.shopify.com/s/files/1/0077/3451/2381/products/Lataffa_Fakhar_600x.jpg"
-            },
-            {
-                name: "Bade amethyst",
-                price: 56000,
-                image: "https://cdn.shopify.com/s/files/1/0029/7307/7856/products/Amethyst_600x.jpg"
-            },
-            {
-                name: "Haramai aqua Dubai",
-                price: 110000,
-                image: "https://cdn.shopify.com/s/files/1/0270/0737/products/Haramai_Aqua_Dubai_600x.jpg"
-            },
-            {
-                name: "Badee oud Glory",
-                price: 55000,
-                image: "https://cdn.shopify.com/s/files/1/0029/7307/7856/products/Badee_Oud_Glory_600x.jpg"
-            },
-            {
-                name: "The kingdom",
-                price: 70000,
-                image: "https://cdn.shopify.com/s/files/1/0209/9831/products/The_Kingdom_600x.jpg"
-            }
-        ];
+        const cart = [];
+
+        function renderCart() {
+            const cartItems = document.getElementById("cartItems");
+            cartItems.innerHTML = "";
+            cart.forEach((item, index) => {
+                const li = document.createElement("li");
+                li.textContent = `${item.name}${item.flavor ? ` (${item.flavor})` : ""} x${item.quantity}`;
+                const removeBtn = document.createElement("button");
+                removeBtn.textContent = "X";
+                removeBtn.className = "remove-btn";
+                removeBtn.onclick = () => {
+                    cart.splice(index, 1);
+                    renderCart();
+                };
+                li.appendChild(removeBtn);
+                cartItems.appendChild(li);
+            });
+
+            const msg = cart.map(item => `${item.name}${item.flavor ? ` (${item.flavor})` : ""} x${item.quantity}`).join("%0A");
+            document.getElementById("whatsappBtn").href = `https://wa.me/541161224164?text=Hola! Quiero comprar:%0A${msg}`;
+        }
 
         const vaperGrid = document.getElementById("vaperGrid");
-        vapers.forEach(v => {
+        vapers.forEach(p => {
             const card = document.createElement("div");
             card.className = "product-card";
-            const flavorOptions = v.flavors.map(f => `<option value="${f}">${f}</option>`).join('');
+            const options = p.flavors.map(f => `<option value="${f}">${f}</option>`).join("");
             card.innerHTML = `
-                <img src="${v.image}" alt="${v.name}">
-                <h3>${v.name}</h3>
-                <p>$${v.price.toLocaleString()}</p>
-                <select class="flavor-select" required>
-                    <option value="">Seleccionar sabor</option>
-                    ${flavorOptions}
-                </select>
-                <input class="quantity-input" type="number" min="1" value="1" />
+                <img src="${p.image}" alt="${p.name}">
+                <h3>${p.name}</h3>
+                <p>$${p.price.toLocaleString()}</p>
+                <select class="flavor-select">${options}</select>
+                <input class="quantity-input" type="number" min="1" value="1">
                 <button class="add-cart-btn">Agregar al carrito</button>
             `;
             const button = card.querySelector(".add-cart-btn");
             button.addEventListener("click", () => {
-                const flavorSelect = card.querySelector(".flavor-select");
-                const flavor = flavorSelect.value;
-                if (!flavor) {
-                    alert("Por favor, seleccioná un sabor.");
-                    flavorSelect.focus();
-                    return;
-                }
+                const flavor = card.querySelector(".flavor-select").value;
                 const quantity = parseInt(card.querySelector(".quantity-input").value);
-                cart.push({ name: v.name, flavor, quantity });
+                cart.push({ name: p.name, flavor, quantity });
                 renderCart();
             });
             vaperGrid.appendChild(card);
@@ -340,7 +262,7 @@
                 <img src="${p.image}" alt="${p.name}">
                 <h3>${p.name}</h3>
                 <p>$${p.price.toLocaleString()}</p>
-                <input class="quantity-input" type="number" min="1" value="1" />
+                <input class="quantity-input" type="number" min="1" value="1">
                 <button class="add-cart-btn">Agregar al carrito</button>
             `;
             const button = card.querySelector(".add-cart-btn");
@@ -351,21 +273,6 @@
             });
             perfumeGrid.appendChild(card);
         });
-
-        const cart = [];
-
-        function renderCart() {
-            const cartItems = document.getElementById("cartItems");
-            cartItems.innerHTML = "";
-            cart.forEach(item => {
-                const li = document.createElement("li");
-                li.textContent = `${item.name} ${item.flavor ? `(${item.flavor})` : ""} x${item.quantity}`;
-                cartItems.appendChild(li);
-            });
-
-            const msg = cart.map(item => `${item.name}${item.flavor ? ` (${item.flavor})` : ""} x${item.quantity}`).join("%0A");
-            document.getElementById("whatsappBtn").href = `https://wa.me/541161224164?text=Hola! Quiero comprar:%0A${msg}`;
-        }
     </script>
 </body>
 </html>
