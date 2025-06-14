@@ -1,288 +1,296 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Importa JMB - Tienda Exclusiva</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #000;
-            color: #fff;
-        }
-        header {
-            background: linear-gradient(to right, #b8860b, #000);
-            color: white;
-            padding: 20px 60px;
-            text-align: center;
-            position: relative;
-        }
-        header img.logo {
-            height: 60px;
-            position: absolute;
-            top: 10px;
-            left: 20px;
-        }
-        .banner {
-            background: url('https://i.ibb.co/k1KNxw5/banner-vape-perfume.jpg') center/cover no-repeat;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-            text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
-        }
-        .container {
-            padding: 20px;
-        }
-        h2 {
-            margin-top: 40px;
-            border-bottom: 2px solid #b8860b;
-            padding-bottom: 5px;
-        }
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .product-card {
-            background-color: #111;
-            border: 1px solid #b8860b;
-            border-radius: 12px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 15px;
-            text-align: center;
-        }
-        .product-card img {
-            width: 100%;
-            max-height: 160px;
-            object-fit: contain;
-            border-radius: 8px;
-        }
-        .product-card h3 {
-            font-size: 1rem;
-            margin: 10px 0 5px;
-            color: #ffd700;
-        }
-        .product-card p {
-            margin: 5px 0;
-            font-weight: bold;
-            color: #fff;
-        }
-        .flavor-select, .quantity-input {
-            margin-top: 10px;
-            padding: 6px;
-            width: 90%;
-            border-radius: 6px;
-            font-size: 0.9rem;
-        }
-        .add-cart-btn {
-            margin-top: 10px;
-            background-color: #b8860b;
-            color: white;
-            border: none;
-            padding: 8px;
-            width: 90%;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-        #cart {
-            padding: 20px;
-            border-top: 2px solid #444;
-            margin-top: 30px;
-        }
-        #cart ul {
-            list-style: none;
-            padding: 0;
-        }
-        #cart li {
-            margin-bottom: 10px;
-        }
-        .remove-btn {
-            margin-left: 10px;
-            background-color: red;
-            color: white;
-            border: none;
-            padding: 3px 6px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .whatsapp-btn {
-            display: inline-block;
-            margin-top: 20px;
-            background-color: #25D366;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            text-decoration: none;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Importa JMB - Tienda Exclusiva</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+    }
+    header {
+      background: linear-gradient(to right, #b8860b, #000);
+      color: white;
+      padding: 20px 60px;
+      text-align: center;
+      position: relative;
+    }
+    header img.logo {
+      height: 60px;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+    }
+    .banner {
+      background: url('https://img.freepik.com/foto-gratis/fondo-banner-lujo-perfecto-canva_1361-3594.jpg?ga=GA1.1.1234299930.1729894242&semt=ais_hybrid&w=740') center/cover no-repeat;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
+    }
+    .container {
+      padding: 20px;
+    }
+    h2 {
+      margin-top: 40px;
+      border-bottom: 2px solid #b8860b;
+      padding-bottom: 5px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .product-card {
+      background-color: #111;
+      border: 1px solid #b8860b;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px;
+      text-align: center;
+    }
+    .product-card img {
+      width: 100%;
+      max-height: 160px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .product-card h3 {
+      font-size: 1rem;
+      margin: 10px 0 5px;
+      color: #ffd700;
+    }
+    .product-card p {
+      margin: 5px 0;
+      font-weight: bold;
+      color: #fff;
+    }
+    .flavor-select, .quantity-input {
+      margin-top: 10px;
+      padding: 6px;
+      width: 90%;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+    .add-cart-btn {
+      margin-top: 10px;
+      background-color: #b8860b;
+      color: white;
+      border: none;
+      padding: 8px;
+      width: 90%;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #cart {
+      padding: 20px;
+      border-top: 2px solid #444;
+      margin-top: 30px;
+    }
+    #cart ul {
+      list-style: none;
+      padding: 0;
+    }
+    #cart li {
+      margin-bottom: 10px;
+    }
+    .remove-btn {
+      margin-left: 10px;
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 3px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .whatsapp-btn {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #25D366;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <img src="https://i.ibb.co/1XzQ1r5/logo-jmb.png" alt="Logo Importa JMB" class="logo">
-        <h1>Importa JMB</h1>
-    </header>
+  <header>
+    <img src="https://i.ibb.co/1XzQ1r5/logo-jmb.png" alt="Logo Importa JMB" class="logo" />
+    <h1>Importa JMB</h1>
+  </header>
 
-    <div class="banner">
-        ¡Descubrí los mejores vapers y perfumes exclusivos!
-    </div>
+  <div class="banner">
+    ¡Descubrí los mejores vapers y perfumes exclusivos!
+  </div>
 
-    <div class="container">
-        <h2>Vapers</h2>
-        <div class="product-grid" id="vaperGrid"></div>
+  <div class="container">
+    <h2>Vapers</h2>
+    <div class="product-grid" id="vaperGrid"></div>
 
-        <h2>Perfumes</h2>
-        <div class="product-grid" id="perfumeGrid"></div>
-    </div>
+    <h2>Perfumes</h2>
+    <div class="product-grid" id="perfumeGrid"></div>
+  </div>
 
-    <div id="cart">
-        <h2>Carrito</h2>
-        <ul id="cartItems"></ul>
-        <a id="whatsappBtn" class="whatsapp-btn" href="#" target="_blank">Finalizar compra por WhatsApp</a>
-    </div>
+  <div id="cart">
+    <h2>Carrito</h2>
+    <ul id="cartItems"></ul>
+    <a id="whatsappBtn" class="whatsapp-btn" href="#" target="_blank">Finalizar compra por WhatsApp</a>
+  </div>
 
-    <script>
-        const vapers = [
-            {
-                name: "Geek Bar 25k",
-                price: 27000,
-                image: "https://totalvape.com.py/wp-content/uploads/2024/01/geekbar-pulse-x-cool-mint.jpg",
-                flavors: ["Blackberry b-pop", "Cool mint"]
-            },
-            {
-                name: "The black sheep",
-                price: 27000,
-                image: "https://totalvape.com.py/wp-content/uploads/2024/02/geekbar-sheep.jpg",
-                flavors: ["Strawberry banana/pineapple coconut", "Menthol/Watermelon", "Cherry raspberry/watermelon strawberry"]
-            },
-            {
-                name: "Los Mary combo 20k",
-                price: 26000,
-                image: "https://totalvape.com.py/wp-content/uploads/2024/03/losmary-combo.jpg",
-                flavors: ["Grape/Mary drinks", "Blackcurrant raspberry/grape"]
-            },
-            {
-                name: "Lost Mary Mixer 30k",
-                price: 28000,
-                image: "https://totalvape.com.py/wp-content/uploads/2024/04/lostmary-mixer.jpg",
-                flavors: ["Orange strawberry", "Apple grape"]
-            },
-            {
-                name: "Elfbar ice king 40k",
-                price: 30000,
-                image: "https://totalvape.com.py/wp-content/uploads/2024/05/elfbar-iceking.jpg",
-                flavors: ["Blue razz ice", "Green Apple ice", "Strawberry watermelon ice", "Grape ice", "Mango Magic"]
-            },
-            {
-                name: "Oxbar g prime 25k",
-                price: 26000,
-                image: "https://totalvape.com.py/wp-content/uploads/2024/06/oxbar-gprime.jpg",
-                flavors: ["Watermelon slushie"]
-            },
-            {
-                name: "BLVK JUICE ONLY 45K",
-                price: 30000,
-                image: "https://totalvape.com.py/wp-content/uploads/2024/07/blvk-juice.jpg",
-                flavors: ["Menthol", "Strawberry kiwi"]
-            }
-        ];
+  <script>
+    const vapers = [
+      {
+        name: "Geek Bar 25k",
+        price: 27000,
+        image: "https://www.tiendavapor.com/image/cache/catalog/GeekBar/geekbar25000miamimint-295x295.png",
+        flavors: ["Blackberry b-pop", "Cool mint"]
+      },
+      {
+        name: "The black sheep",
+        price: 27000,
+        image: "https://acdn-us.mitiendanube.com/stores/002/258/088/products/1_1000x1000-7e9beb8fa44862633217381643577619-1024-1024.webp",
+        flavors: ["Strawberry banana/pineapple coconut", "Menthol/Watermelon", "Cherry raspberry/watermelon strawberry"]
+      },
+      {
+        name: "Los Mary combo 20k",
+        price: 26000,
+        image: "https://vapeverse.co.uk/cdn/shop/files/WhatsApp_Image_2024-10-05_at_6.24.11_PM.jpg?v=1728134699",
+        flavors: ["Grape/Mary drinks", "Blackcurrant raspberry/grape"]
+      },
+      {
+        name: "Lost Mary Mixer 30k",
+        price: 28000,
+        image: "https://cdn.totalvape.com.py/upload/product/50166/m-lost-mary-mixer-30000-blueberry-watermel.jpg",
+        flavors: ["Orange strawberry", "Apple grape"]
+      },
+      {
+        name: "Elfbar ice king 40k",
+        price: 30000,
+        image: "https://cdn.totalvape.com.py/upload/product/50982/m-elfbar-ice-king-40k-blue-razz-ice.png",
+        flavors: ["Blue razz ice", "Green Apple ice", "Strawberry watermelon ice", "Grape ice", "Mango Magic"]
+      },
+      {
+        name: "Oxbar g prime 25k",
+        price: 26000,
+        image: "https://acdn-us.mitiendanube.com/stores/005/345/162/products/oxbar-g-prime-25k-straw-buble-8f5d3986bd7ef0b42a17340176385444-1024-1024.jpg",
+        flavors: ["Watermelon slushie"]
+      },
+      {
+        name: "BLVK JUICE ONLY 45K",
+        price: 30000,
+        image: "https://cdn.totalvape.com.py/upload/product/58377/m-blvk-just-juice-45k-dragon-strawnana.jpeg",
+        flavors: ["Menthol", "Strawberry kiwi"]
+      }
+    ];
 
-        const perfumes = [
-  { name: "Asad", price: 48000, image: "https://totalvape.com.py/wp-content/uploads/2024/08/asad-perfume.jpg" },
-  { name: "Yara rosa", price: 55000, image: "https://totalvape.com.py/wp-content/uploads/2024/09/yara-rosa.jpg" },
-  { name: "Yara candy", price: 48000, image: "https://totalvape.com.py/wp-content/uploads/2024/10/yara-candy.jpg" },
-  { name: "Club intense", price: 55000, image: "https://totalvape.com.py/wp-content/uploads/2024/11/club-intense.jpg" },
-  { name: "Club woman", price: 70000, image: "https://totalvape.com.py/wp-content/uploads/2024/12/club-woman.jpg" },
-  { name: "Honor & Glory", price: 55000, image: "https://totalvape.com.py/wp-content/uploads/2025/01/honor-glory.jpg" },
-  { name: "Club elixir Urban", price: 84000, image: "https://totalvape.com.py/wp-content/uploads/2025/02/club-elixir-urban.jpg" },
-  { name: "Bharara king", price: 100000, image: "https://totalvape.com.py/wp-content/uploads/2025/03/bharara-king.jpg" },
-  { name: "Haramai gold", price: 110000, image: "https://totalvape.com.py/wp-content/uploads/2025/04/haramai-gold.jpg" },
-  { name: "Rasasia hawas", price: 63000, image: "https://totalvape.com.py/wp-content/uploads/2025/05/rasasia-hawas.jpg" },
-  { name: "Odyssey mandarin", price: 73000, image: "https://totalvape.com.py/wp-content/uploads/2025/06/odyssey-mandarin.jpg" },
-  { name: "Odyssey cande", price: 73000, image: "https://totalvape.com.py/wp-content/uploads/2025/07/odyssey-cande.jpg" },
-  { name: "Lataffa ajwad", price: 48000, image: "https://totalvape.com.py/wp-content/uploads/2025/08/lataffa-ajwad.jpg" },
-  { name: "Lataffa fakhar", price: 58000, image: "https://totalvape.com.py/wp-content/uploads/2025/09/lataffa-fakhar.jpg" },
-  { name: "Bade amethyst", price: 56000, image: "https://totalvape.com.py/wp-content/uploads/2025/10/bade-amethyst.jpg" },
-  { name: "Haramai aqua Dubai", price: 110000, image: "https://totalvape.com.py/wp-content/uploads/2025/11/haramai-aqua-dubai.jpg" },
-  { name: "Badee oud Glory", price: 55000, image: "https://totalvape.com.py/wp-content/uploads/2025/12/badee-oud-glory.jpg" },
-  { name: "The kingdom", price: 70000, image: "https://totalvape.com.py/wp-content/uploads/2026/01/the-kingdom.jpg" }
-];
+    const perfumes = [
+      { name: "Yara tous", price: 55000, image: "https://cdn.totalvape.com.py/upload/product/52566/perf-lattafa-yara-tous-100ml.jpg" },
+      { name: "Yara rosa", price: 55000, image: "https://lattafa.com/wp-content/uploads/2025/05/Yara-copy-2.jpg" },
+      { name: "Yara candy", price: 48000, image: "https://lattafa.com/wp-content/uploads/2024/09/Yara-Candy-Bottle.png" },
+      { name: "Club intense", price: 55000, image: "https://armaf.com/cdn/shop/files/CDN3.6.png?v=1744303480&width=500" },
+      { name: "Club woman", price: 70000, image: "https://armaf.com/cdn/shop/files/35721_3.png?v=1744325976&width=500" },
+      { name: "Honor & Glory", price: 55000, image: "https://lattafa.com/wp-content/uploads/2024/05/1-120.jpg" },
+      { name: "Club elixir Urban", price: 84000, image: "https://armaf.com/cdn/shop/files/CLUBDENUITintenseLimitedEdition_M.jpg?v=1739111318&width=500" },
+      { name: "Rasasia hawas for him", price: 63000, image: "https://rasasistore.com/cdn/shop/files/HAWASFORHIMEDP100ML.jpg?v=1737092005" },
+      { name: "Rasasia hawas ice", price: 71000, image: "https://rasasistore.com/cdn/shop/files/HAWASFORHIMEDP100ML.jpg?v=1737092005" },
+      { name: "Odyssey mandarin", price: 73000, image: "https://armaf.com/cdn/shop/files/armaf_beach_7.png?v=1744397543&width=500" },
+      { name: "Odyssey cande", price: 73000, image: "https://armaf.com/cdn/shop/files/armafbeach_11.png?v=1744408386&width=500" },
+      { name: "Lataffa ajwad", price: 48000, image: "https://lattafa.com/wp-content/uploads/2024/08/Bottle-box-1-scaled.jpg" },
+      { name: "Lataffa fakhar", price: 58000, image: "https://lattafa.com/wp-content/uploads/2024/06/1-11.jpg" },
+      { name: "Bade amethyst", price: 56000, image: "https://lattafa.com/wp-content/uploads/2024/10/BADEE-AL-OUD-AMETHYST-BOX-AND-BOTTLE_page-0002.jpg" },
+      { name: "Badee oud Glory", price: 55000, image: "https://lattafa.com/wp-content/uploads/2024/05/1-96.jpg" },
+      { name: "The kingdom", price: 70000, image: "https://lattafa.com/wp-content/uploads/2024/09/Kingdom-men-box.jpg" },
+      { name: "Asad Bourbon", price: 55999, image: "https://lattafa.com/wp-content/uploads/2024/12/Asad-Bourbon-Bottle-scaled.jpg" }
+    ];
 
-        const cart = [];
+    const cart = [];
 
-        function renderCart() {
-            const cartItems = document.getElementById("cartItems");
-            cartItems.innerHTML = "";
-            cart.forEach((item, index) => {
-                const li = document.createElement("li");
-                li.textContent = `${item.name}${item.flavor ? ` (${item.flavor})` : ""} x${item.quantity}`;
-                const removeBtn = document.createElement("button");
-                removeBtn.textContent = "X";
-                removeBtn.className = "remove-btn";
-                removeBtn.onclick = () => {
-                    cart.splice(index, 1);
-                    renderCart();
-                };
-                li.appendChild(removeBtn);
-                cartItems.appendChild(li);
-            });
-            const msg = cart.map(item => `${item.name}${item.flavor ? ` (${item.flavor})` : ""} x${item.quantity}`).join("%0A");
-            document.getElementById("whatsappBtn").href = `https://wa.me/541161224164?text=Hola! Quiero comprar:%0A${msg}`;
-        }
+    function renderCart() {
+      const cartItems = document.getElementById("cartItems");
+      cartItems.innerHTML = "";
+      cart.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.textContent = `${item.name}${item.flavor ? ` (${item.flavor})` : ""} x${item.quantity}`;
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "X";
+        removeBtn.className = "remove-btn";
+        removeBtn.onclick = () => {
+          cart.splice(index, 1);
+          renderCart();
+        };
+        li.appendChild(removeBtn);
+        cartItems.appendChild(li);
+      });
+      const total = cart.reduce((sum, item) => {
+        const product = [...vapers, ...perfumes].find(p => p.name === item.name);
+        return sum + (product ? product.price * item.quantity : 0);
+      }, 0);
+      const totalDisplay = document.createElement("p");
+      totalDisplay.style.marginTop = "10px";
+      totalDisplay.innerHTML = `<strong>Total: $${total.toLocaleString()}</strong>`;
+      cartItems.appendChild(totalDisplay);
 
-        const vaperGrid = document.getElementById("vaperGrid");
-        vapers.forEach(p => {
-            const card = document.createElement("div");
-            card.className = "product-card";
-            const options = p.flavors.map(f => `<option value="${f}">${f}</option>`).join("");
-            card.innerHTML = `
-                <img src="${p.image}" alt="${p.name}">
-                <h3>${p.name}</h3>
-                <p>$${p.price.toLocaleString()}</p>
-                <select class="flavor-select">${options}</select>
-                <input class="quantity-input" type="number" min="1" value="1">
-                <button class="add-cart-btn">Agregar al carrito</button>
-            `;
-            const button = card.querySelector(".add-cart-btn");
-            button.addEventListener("click", () => {
-                const flavor = card.querySelector(".flavor-select").value;
-                const quantity = parseInt(card.querySelector(".quantity-input").value);
-                cart.push({ name: p.name, flavor, quantity });
-                renderCart();
-            });
-            vaperGrid.appendChild(card);
-        });
+      const msg = cart.map(item => `${item.name}${item.flavor ? ` (${item.flavor})` : ""} x${item.quantity}`).join("%0A");
+      document.getElementById("whatsappBtn").href = `https://wa.me/541161224164?text=Hola! Quiero comprar:%0A${msg}%0ATotal: $${total.toLocaleString()}`;
+    }
 
-        const perfumeGrid = document.getElementById("perfumeGrid");
-        perfumes.forEach(p => {
-            const card = document.createElement("div");
-            card.className = "product-card";
-            card.innerHTML = `
-                <img src="https://i.ibb.co/g7BdFkm/perfume-bottle.jpg" alt="${p.name}">
-                <h3>${p.name}</h3>
-                <p>$${p.price.toLocaleString()}</p>
-                <input class="quantity-input" type="number" min="1" value="1">
-                <button class="add-cart-btn">Agregar al carrito</button>
-            `;
-            const button = card.querySelector(".add-cart-btn");
-            button.addEventListener("click", () => {
-                const quantity = parseInt(card.querySelector(".quantity-input").value);
-                cart.push({ name: p.name, flavor: "", quantity });
-                renderCart();
-            });
-            perfumeGrid.appendChild(card);
-        });
-    </script>
+    const vaperGrid = document.getElementById("vaperGrid");
+    vapers.forEach(p => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+      const options = p.flavors.map(f => `<option value="${f}">${f}</option>`).join("");
+      card.innerHTML = `
+        <img src="${p.image}" alt="${p.name}">
+        <h3>${p.name}</h3>
+        <p>$${p.price.toLocaleString()}</p>
+        <select class="flavor-select">${options}</select>
+        <input class="quantity-input" type="number" min="1" value="1">
+        <button class="add-cart-btn">Agregar al carrito</button>
+      `;
+      const button = card.querySelector(".add-cart-btn");
+      button.addEventListener("click", () => {
+        const flavor = card.querySelector(".flavor-select").value;
+        const quantity = parseInt(card.querySelector(".quantity-input").value);
+        cart.push({ name: p.name, flavor, quantity });
+        renderCart();
+      });
+      vaperGrid.appendChild(card);
+    });
+
+    const perfumeGrid = document.getElementById("perfumeGrid");
+    perfumes.forEach(p => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.innerHTML = `
+        <img src="${p.image}" alt="${p.name}">
+        <h3>${p.name}</h3>
+        <p>$${p.price.toLocaleString()}</p>
+        <input class="quantity-input" type="number" min="1" value="1">
+        <button class="add-cart-btn">Agregar al carrito</button>
+      `;
+      const button = card.querySelector(".add-cart-btn");
+      button.addEventListener("click", () => {
+        const quantity = parseInt(card.querySelector(".quantity-input").value);
+        cart.push({ name: p.name, flavor: "", quantity });
+        renderCart();
+      });
+      perfumeGrid.appendChild(card);
+    });
+  </script>
 </body>
 </html>
